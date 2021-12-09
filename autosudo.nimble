@@ -2,10 +2,10 @@
 
 version       = "0.1.0"
 author        = "Akito <the@akito.ooo>"
-description   = "A new awesome nimble nimpackage."
+description   = "Automatically re-run your last command as sudo, if permission was denied."
 license       = "GPL-3.0-or-later"
 srcDir        = "src"
-bin           = @["nimpackage"]
+bin           = @["autosudo"]
 skipDirs      = @["tasks"]
 skipFiles     = @["README.md"]
 skipExt       = @["nim"]
@@ -31,17 +31,19 @@ task configure, "Configure project. Run whenever you continue contributing to th
   exec "git status"
 task fbuild, "Build project.":
   exec """nim c \
+            --passL="-lutil" \
             --define:danger \
             --opt:speed \
-            --out:nimpackage \
-            src/nimpackage
+            --out:autosudo \
+            src/autosudo
        """
 task dbuild, "Debug Build project.":
   exec """nim c \
+            --passL="-lutil" \
             --define:debug:true \
             --debuginfo:on \
-            --out:nimpackage \
-            src/nimpackage
+            --out:autosudo \
+            src/autosudo
        """
 task makecfg, "Create nim.cfg for optimized builds.":
   exec "nim tasks/cfg_optimized.nims"
