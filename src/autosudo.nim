@@ -1,4 +1,3 @@
-#!/bin/bash
 #########################################################################
 # Copyright (C) 2021 Akito <the@akito.ooo>                              #
 #                                                                       #
@@ -59,7 +58,7 @@ let
 var
   buffer: cstring = newString(100).cstring
 
-proc takeLast(s: string, tailLen: int): string =
+func takeLast(s: string, tailLen: int): string =
   if s.len > tailLen: s[^tailLen..^1] else: s
 
 proc getOutput(noperm = "noperm"): string =
