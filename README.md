@@ -32,7 +32,7 @@ The following approach shows how to make this project work from source.
 
 ### Installation
 ```bash
-bash setup.sh ~/.bashrc
+bash install.sh ~/.bashrc
 ```
 
 ### De-Installation
