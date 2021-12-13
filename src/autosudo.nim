@@ -66,8 +66,8 @@ proc getOutput(noperm = "noperm"): string =
     while fgets(buffer, buffer.sizeof, stdin).len > 0:
       result &= $buffer
       let
-        resultSlice = result.takeLast(resultTailLen)
-        resultLastLineContainsPermissionDenied = patterns.anyIt(resultSlice.toLowerAscii().contains(it))
+        resultSlice = result.takeLast(resultTailLen).toLowerAscii()
+        resultLastLineContainsPermissionDenied = patterns.anyIt(resultSlice.contains(it))
       if resultLastLineContainsPermissionDenied: return noperm
   except:
     result = getCurrentExceptionMsg()
